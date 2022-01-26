@@ -1,5 +1,6 @@
 package com.example.friendsbridgeapp
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -29,8 +30,8 @@ class LocalUserDB(
     fun createDB(db: SQLiteDatabase){
         val sql = "CREATE TABLE IF NOT EXISTS ${LocalData.userData.TABLE_NAME} (" +
                 "${BaseColumns._ID} INTEGER PRIMARY KEY," +
-                "${LocalData.userData.COLUMN_NAME_ID} TEXT," +
-                "${LocalData.userData.COLUMN_NAME_PASSWORD} TEXT" +
+                "${LocalData.userData.COLUMN_NAME_ID} varchar(15)," +
+                "${LocalData.userData.COLUMN_NAME_PASSWORD} varchar(20)" +
                 ");"
         db.execSQL(sql)
     }
@@ -54,12 +55,12 @@ class LocalUserDB(
         )
 
         if(cursor.count > 0){
-            cursor.close()
-            userDB.close()
+            //cursor.close()
+            //userDB.close()
             return true }
-        cursor.close()
-        userDB.close()
-        return false
+        //cursor.close()
+        //userDB.close()
+        else{return false}
     }
 
     fun login(ID: String, Password: String) : Boolean{
@@ -81,12 +82,21 @@ class LocalUserDB(
         )
 
         if(cursor.count > 0){
-            cursor.close()
-            userDB.close()
+            //cursor.close()
+            //userDB.close()
             return true}
-        cursor.close()
-        userDB.close()
-        return false
+        //cursor.close()
+        //userDB.close()
+        else{return false}
+    }
+
+    fun join(ID: String, Password: String){
+        val userDB = this.writableDatabase
+        val userInfo = ContentValues().apply {
+            put(LocalData.userData.COLUMN_NAME_ID, ID)
+            put(LocalData.userData.COLUMN_NAME_PASSWORD, Password)
+        }
+        val newRowId = userDB?.insert(LocalData.userData.TABLE_NAME, null, userInfo)
     }
 
 }
