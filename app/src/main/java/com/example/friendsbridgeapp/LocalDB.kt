@@ -1,10 +1,10 @@
 package com.example.friendsbridgeapp
 
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
-import java.util.prefs.PreferencesFactory
 
 class LocalUserDB(
     context: Context?,
@@ -34,4 +34,59 @@ class LocalUserDB(
                 ");"
         db.execSQL(sql)
     }
+    fun checkID(ID: String): Boolean{
+        // 매개 변수로 받아온 ID가 userTBL의 ID 목록에 있는지 확인
+        val userDB = this.readableDatabase
+
+        val projection = arrayOf(BaseColumns._ID)
+
+        val selection = "${LocalData.userData.COLUMN_NAME_ID} = ?"
+        val selectionArguments = arrayOf(ID)
+
+        val cursor: Cursor = userDB.query(
+            LocalData.userData.TABLE_NAME,
+            projection,
+            selection,
+            selectionArguments,
+            null,
+            null,
+            null
+        )
+
+        if(cursor.count > 0){
+            cursor.close()
+            userDB.close()
+            return true }
+        cursor.close()
+        userDB.close()
+        return false
+    }
+
+    fun login(ID: String, Password: String) : Boolean{
+        val userDB = this.readableDatabase
+
+        val projection = arrayOf(BaseColumns._ID)
+
+        val selection = "${LocalData.userData.COLUMN_NAME_ID} = ? AND ${LocalData.userData.COLUMN_NAME_PASSWORD} = ?"
+        val selectionArguments = arrayOf(ID, Password)
+
+        val cursor : Cursor = userDB.query(
+            LocalData.userData.TABLE_NAME,
+            projection,
+            selection,
+            selectionArguments,
+            null,
+            null,
+            null
+        )
+
+        if(cursor.count > 0){
+            cursor.close()
+            userDB.close()
+            return true}
+        cursor.close()
+        userDB.close()
+        return false
+    }
+
 }
