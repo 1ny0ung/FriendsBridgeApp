@@ -1,16 +1,22 @@
 package com.example.friendsbridgeapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class JoinActivity : AppCompatActivity() {
     private lateinit var edtEmail : EditText
     private lateinit var edtPassword : EditText
     private lateinit var btnJoin : Button
-    private lateinit var localUserDB: LocalUserDB
+
+    private lateinit var loginAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,30 +26,35 @@ class JoinActivity : AppCompatActivity() {
         edtPassword = findViewById<EditText>(R.id.edtPassword)
         btnJoin = findViewById<Button>(R.id.btnJoin)
 
-        localUserDB = LocalUserDB(this, "LocalUserDB.db", null, 1)
+        loginAuth = Firebase.auth
 
         btnJoin.setOnClickListener {
-            val userID = edtEmail.text.toString()
-            val userPassword = edtPassword.text.toString()
-
-            if(userID == "" || userPassword == ""){
-                Toast.makeText(this, "아이디와 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
+            if(edtEmail.text.toString() == "" || edtPassword.text.toString() == ""){
+                Toast.makeText(this, "이메일과 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
-
-            // ID, Password 유효성 검사문 넣기
-            // ID, 비밀번호에 영문자, 숫자 포함되어야 하고 6자 이상이어야 함!
-
             else{
-                val isIDExists : Boolean = localUserDB.checkID(edtEmail.text.toString())
-                if(isIDExists){
-                    Toast.makeText(this, "이미 존재하는 아이디입니다. 다른 아이디를 설정해 주세요.", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    localUserDB.join(edtEmail.text.toString(), edtPassword.text.toString())
-                    Toast.makeText(this, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
-                    // 로그인 화면으로 전환
-                }
+                createAccount(edtEmail.text.toString(), edtPassword.text.toString())
             }
         }
+
+
+    }
+    private fun createAccount(email: String, password: String) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            loginAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                        var intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
+
+    private fun checkPassword(password: String){
+
     }
 }
