@@ -1,5 +1,6 @@
 package com.example.friendsbridgeapp
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -44,6 +45,11 @@ class LoginActivity : AppCompatActivity() {
             else{
                 LoginByEmail(edtEmail.text.toString(), edtPassword.text.toString())
             }
+        }
+
+        btnJoin.setOnClickListener {
+            var intent = Intent(this, JoinActivity::class.java)
+            startActivity(intent)
         }
     }
 
