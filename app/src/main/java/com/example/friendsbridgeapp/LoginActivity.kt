@@ -1,5 +1,6 @@
 package com.example.friendsbridgeapp
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -10,6 +11,9 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var edtEmail : EditText
@@ -18,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var checkEmailSave : CheckBox
     private lateinit var btnLogin : Button
     private lateinit var btnJoin : Button
-    private lateinit var localUserDB: LocalUserDB
+
+    private lateinit var loginAuth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,28 +36,30 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById<Button>(R.id.btnLogin)
         btnJoin = findViewById<Button>(R.id.btnJoin)
 
-        localUserDB = LocalUserDB(this, "LocalUserDB.db", null, 1)
+        loginAuth = Firebase.auth
 
         btnLogin.setOnClickListener {
-            val userID = edtEmail.text.toString()
-            val userPassword = edtPassword.text.toString()
-            if(userID == "" || userPassword == ""){
-                Toast.makeText(this, "아이디와 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
+            if(edtEmail.text.toString() == "" || edtPassword.text.toString() == ""){
+                Toast.makeText(this, "이메일과 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
             else{
-                val isConfirmed : Boolean = localUserDB.login(userID, userPassword)
-                if(isConfirmed){
-                // 로그인 후 다음 액티비티로 이동하는 코드 필요
-                Toast.makeText(this, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    if(localUserDB.checkID(userID)){
-                        Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(this, "존재하지 않는 ID입니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                LoginByEmail(edtEmail.text.toString(), edtPassword.text.toString())
+            }
+        }
+
+        btnJoin.setOnClickListener {
+            var intent = Intent(this, JoinActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun LoginByEmail(email: String, password: String){
+        loginAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){ task ->
+            if(task.isSuccessful){
+                Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(this,"로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }
