@@ -1,24 +1,22 @@
 package com.example.friendsbridgeapp
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.util.regex.Pattern
 
 class JoinActivity : AppCompatActivity() {
     private lateinit var edtName : EditText
@@ -52,13 +50,13 @@ class JoinActivity : AppCompatActivity() {
         }
 
         btnJoin.setOnClickListener {
-            if(edtEmail.text.toString() == "" || edtPassword.text.toString() == ""){
-                Toast.makeText(this, "이메일과 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
+            if(edtName.text.toString() == "" || edtEmail.text.toString() == "" || edtPassword.text.toString() == ""){
+                Toast.makeText(this, "닉네임, 이메일, 비밀번호는 공란일 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
-            /*else if (imgFile == null){
+            else if (imgFile == null){
                 Toast.makeText(this, "이미지 사진을 선택해 주세요.", Toast.LENGTH_SHORT).show()
-            }*/
-            else{
+            }
+            else if(checkEmail(edtEmail.text.toString()) && checkPassword(edtPassword.text.toString())){
                 createAccount(edtEmail.text.toString(), edtPassword.text.toString())
             }
         }
@@ -68,24 +66,6 @@ class JoinActivity : AppCompatActivity() {
             loginAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        /*val userStorageReference = storage.getReference().child("userProfileImgs").child(task.result!!.user!!.uid.toString())
-                        val userDBRef = database.getReference().child("users").child(task.result!!.user!!.uid)
-                        val uploadTask = userStorageReference.putFile(imgFile!!)
-                        val urlTask = uploadTask.continueWithTask{ task ->
-                            if (!task.isSuccessful) {
-                                task.exception?.let {
-                                    throw it
-                                }
-                            }
-                            userStorageReference.downloadUrl
-                        }.addOnCompleteListener { task ->
-                            if(task.isSuccessful){
-                                val userDataModel = userDataModel(edtName.text.toString(), userStorageReference.downloadUrl.getResult().toString())
-                                userDBRef
-                                    .push()
-                                    .setValue(userDataModel)
-                            }
-                        }*/
                         val userDBRef = database.reference.child("users").child(task.result!!.user!!.uid)
                         val userStorageReference = storage.reference.child("userProfileImgs").child(task.result!!.user!!.uid)
                         val uploadTask = userStorageReference.putFile(imgFile!!)
@@ -118,8 +98,24 @@ class JoinActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkPassword(password: String){
-
+    private fun checkEmail(email: String) : Boolean{
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this, "올바른 이메일 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    private fun checkPassword(password: String) : Boolean{
+        if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", password))
+        {
+            Toast.makeText(this,"올바른 비밀번호 형식이 아닙니다.",Toast.LENGTH_SHORT).show();
+            return false
+        }
+        else{
+            return true
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -128,9 +124,5 @@ class JoinActivity : AppCompatActivity() {
             imgFile = data!!.data
             btnProfileImg.setImageURI(imgFile)
         }
-        else{
-            return
-        }
     }
-
 }
