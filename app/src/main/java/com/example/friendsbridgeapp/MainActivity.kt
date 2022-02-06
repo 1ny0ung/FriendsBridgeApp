@@ -8,13 +8,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.friendsbridgeapp.R
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
         btnMyPage.setOnClickListener {
