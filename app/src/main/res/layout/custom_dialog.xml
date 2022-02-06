@@ -27,8 +27,17 @@
         android:layout_height="68dp"/>
 
     <Button
-        android:text="저장하기"
+        android:text="비공개 저장"
         android:id="@+id/saveBtn"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_margin="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"/>
+
+    <Button
+        android:text="전체 공개 저장"
+        android:id="@+id/saveBtn2"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
         android:layout_margin="28dp"
