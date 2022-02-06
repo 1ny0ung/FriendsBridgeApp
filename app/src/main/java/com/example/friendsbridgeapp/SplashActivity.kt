@@ -23,6 +23,11 @@ class SplashActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        Handler().postDelayed({
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }, 3000)
+        /*
         try {
 
             Log.d("SPLASH", auth.currentUser!!.uid)
@@ -53,6 +58,8 @@ class SplashActivity : AppCompatActivity() {
 
         }
 
-
+         */
     }
+
+
 }

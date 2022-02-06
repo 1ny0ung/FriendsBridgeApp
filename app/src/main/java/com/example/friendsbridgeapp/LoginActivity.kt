@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
     private final val GOOGLE_LOGIN_CODE : Int = 100
 
     private lateinit var loginAuth : FirebaseAuth
-    val database = Firebase.database
+    private val database = Firebase.database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +79,8 @@ class LoginActivity : AppCompatActivity() {
         loginAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){ task ->
             if(task.isSuccessful){
                 Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
             else{
                 Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -107,6 +109,8 @@ class LoginActivity : AppCompatActivity() {
                         }
                         else{
                             Toast.makeText(this, "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
                         }
                     }
                     else{

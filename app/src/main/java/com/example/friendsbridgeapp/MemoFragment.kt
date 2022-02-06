@@ -2,13 +2,13 @@ package com.example.friendsbridgeapp
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.widget.*
 import androidx.fragment.app.Fragment
-import com.example.friendsbridgeapp.R
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,42 +17,44 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    //val dataModelList = mutableListOf<DataModel>()
-    val memoFragment: Fragment = MemoFragment()
-    val myPageFragment : Fragment = MyPageFragment()
+/**
+ * A simple [Fragment] subclass.
+ * Use the [MemoFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class MemoFragment : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
+    val dataModelList = mutableListOf<DataModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        //val database = Firebase.database
-        //val myRef = database.getReference("myMemo")
-
-        //val listView = findViewById<ListView>(R.id.mainLV)
-
-        //val adapterList = ListViewAdapter(dataModelList)
-
-        val btnMyPage = findViewById<Button>(R.id.btnMyPage)
-        btnMyPage.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentView, myPageFragment)
-                .commitAllowingStateLoss()
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
         }
+    }
 
-        val btnMemo = findViewById<Button>(R.id.btnMemo)
-        btnMemo.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentView, memoFragment)
-                .commitAllowingStateLoss()
-        }
-/*
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val database = Firebase.database
+        val myRef = database.getReference("myMemo")
+
+        val listView = getView()!!.findViewById<ListView>(R.id.mainLV)
+
+        val adapterList = ListViewAdapter(dataModelList)
         listView.adapter = adapterList
 
         Log.d("DataModel------", dataModelList.toString())
 
-        myRef.child(Firebase.auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{
+        myRef.child(Firebase.auth.currentUser!!.uid).addValueEventListener(object :
+            ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("point", dataModelList.toString())
                 dataModelList.clear()
@@ -75,13 +77,13 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-        val writeButton = findViewById<ImageView>(R.id.writeBtn)
+        val writeButton = getView()!!.findViewById<ImageView>(R.id.writeBtn)
         writeButton.setOnClickListener {
 
-            val mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
-            val mBuilder = AlertDialog.Builder(this)
-                    .setView(mDialogView)
-                    .setTitle("메모 다이얼로그")
+            val mDialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog, null)
+            val mBuilder = AlertDialog.Builder(context)
+                .setView(mDialogView)
+                .setTitle("메모 다이얼로그")
 
             val mAlertDialog = mBuilder.show()
 
@@ -95,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 val month:Int = today.get(Calendar.MONTH)
                 val date:Int = today.get(Calendar.DATE)
 
-                val dlg = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener {
+                val dlg = DatePickerDialog(context!!, object : DatePickerDialog.OnDateSetListener {
                     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
                     {
                         Log.d("MAIN", "${year}, ${month + 1}, ${dayOfMonth}")
@@ -127,10 +129,37 @@ class MainActivity : AppCompatActivity() {
 
 
             }
-
-
-        }*/
+        }
 
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        // Inflate the layout for this fragment
+
+        return inflater.inflate(R.layout.fragment_memo, container, false)
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment MemoFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            MemoFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
 }
