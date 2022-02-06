@@ -22,10 +22,26 @@ class MainActivity : AppCompatActivity() {
     //val dataModelList = mutableListOf<DataModel>()
     val memoFragment: Fragment = MemoFragment()
     val myPageFragment : Fragment = MyPageFragment()
+    val calendarFragment : Fragment = CalendarFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        //val database = Firebase.database
+        //val myRef = database.getReference("myMemo")
+
+        //val listView = findViewById<ListView>(R.id.mainLV)
+
+        //val adapterList = ListViewAdapter(dataModelList)
+        val btnCalendar = findViewById<Button>(R.id.btnCalendar)
+        btnCalendar.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentView, calendarFragment)
+                    .commitAllowingStateLoss()
+        }
+
 
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
         btnMyPage.setOnClickListener {
