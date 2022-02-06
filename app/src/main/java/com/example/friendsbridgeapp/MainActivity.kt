@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     //val dataModelList = mutableListOf<DataModel>()
     val memoFragment: Fragment = MemoFragment()
     val myPageFragment : Fragment = MyPageFragment()
+    val calendarFragment : Fragment = CalendarFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
