@@ -175,6 +175,12 @@ class MemoFragment : Fragment() {
 
             }
 
+            val cancelBtn = mAlertDialog.findViewById<Button>(R.id.cancelBtn)
+            cancelBtn?.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+
+
         }
 
     }
