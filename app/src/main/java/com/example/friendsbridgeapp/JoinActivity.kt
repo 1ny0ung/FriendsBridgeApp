@@ -67,19 +67,10 @@ class JoinActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val userDBRef = database.reference.child("users").child(task.result!!.user!!.uid)
-                        val userStorageReference = storage.reference.child("userProfileImgs").child(task.result!!.user!!.uid)
-                        val uploadTask = userStorageReference.putFile(imgFile!!)
-                        val urlTask = uploadTask.continueWithTask { task ->
-                            if(!task.isSuccessful){
-                                task.exception?.let {
-                                    throw it
-                                }
-                            }
-                            userStorageReference.downloadUrl
-                        }.addOnCompleteListener { task ->
+                        val userStorageReference = storage.reference.child("userImgs").child( "ProfileImg/" + task.result!!.user!!.uid)
+                        userStorageReference.putFile(imgFile!!).addOnCompleteListener { task ->
                             if(task.isSuccessful){
-                                val downloadUri = task.result
-                                val userDataModel = userDataModel(edtName.text.toString(), downloadUri.toString())
+                                val userDataModel = userDataModel(edtName.text.toString(), userStorageReference.path.toString())
                                 userDBRef
                                     .push()
                                     .setValue(userDataModel)
@@ -88,6 +79,10 @@ class JoinActivity : AppCompatActivity() {
                                 startActivity(intent)
                             }
                             else{
+                                task.exception?.let {
+                                    throw it
+                                }
+
                                 Toast.makeText(this,"프로필 사진 업로드에 실패했습니다.", Toast.LENGTH_SHORT).show()
                             }
                         }
