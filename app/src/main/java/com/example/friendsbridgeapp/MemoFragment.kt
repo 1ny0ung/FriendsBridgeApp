@@ -17,42 +17,28 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MemoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MemoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     val dataModelList = mutableListOf<DataModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val database = Firebase.database
-        val myRef = database.getReference("myMemo")
-        val toAll = database.getReference("ToAll")
+        val database = Firebase.database // 파이어베이스 데이터베이스 담을 변수
+        val myRef = database.getReference("myMemo") //비공개 데이터베이스 경로 변수 
+        val toAll = database.getReference("ToAll") // 전체 공개 데이터베이스 경로 변수
 
-        val listView = getView()!!.findViewById<ListView>(R.id.mainLV)
+        val listView = getView()!!.findViewById<ListView>(R.id.mainLV) // 리스트뷰 변수
 
-        val adapterList = ListViewAdapter(dataModelList)
-        listView.adapter = adapterList
+        val adapterList = ListViewAdapter(dataModelList) // dataModelList 정보를 담은 list형 adapter
+        listView.adapter = adapterList // list형 adapter에 담긴 정보를 listview adapter로 전달
 
-        Log.d("DataModel------", dataModelList.toString())
+        Log.d("DataModel------", dataModelList.toString()) // dataModelList 정보를 log에 찍기
 
         myRef.child(Firebase.auth.currentUser!!.uid).addValueEventListener(object :
             ValueEventListener {
@@ -67,7 +53,7 @@ class MemoFragment : Fragment() {
 
                 }
                 adapterList.notifyDataSetChanged()
-                Log.d("DataModel", dataModelList.toString())
+                Log.d("DataModel", dataModelList.toString()) // dataModelList 정보를 log에 찍기
 
             }
 
@@ -100,10 +86,13 @@ class MemoFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
+
         })
 
-
+        // 글 작성 버튼 변수 선언
         val writeButton = getView()!!.findViewById<ImageView>(R.id.writeBtn)
+
+        // 이미지 버튼이 클릭되면 이벤트 실행
         writeButton.setOnClickListener {
 
             val mDialogView = LayoutInflater.from(context).inflate(R.layout.custom_dialog, null)
@@ -111,29 +100,41 @@ class MemoFragment : Fragment() {
                 .setView(mDialogView)
                 .setTitle("메모 다이얼로그")
 
+            // 다이얼로그 변수 선언
             val mAlertDialog = mBuilder.show()
 
+            // 날짜 선택 버튼을 다이얼로그로 불러오는 변수 선언
             val DateSelectBtn =  mAlertDialog.findViewById<Button>(R.id.dateSelectBtn)
 
+            // 선택한 날짜 text로 담을 변수 선언
             var dateText = ""
 
+            // 날짜 선택 버튼이 클릭되면 이벤트 실행
             DateSelectBtn?.setOnClickListener {
-                val today = GregorianCalendar()
-                val year:Int = today.get(Calendar.YEAR)
-                val month:Int = today.get(Calendar.MONTH)
-                val date:Int = today.get(Calendar.DATE)
+                val today = GregorianCalendar() // GregorianCalendar를 가져와서 날짜 설정
+                val year:Int = today.get(Calendar.YEAR) // 년도 설정
+                val month:Int = today.get(Calendar.MONTH) // 달 설정
+                val date:Int = today.get(Calendar.DATE) // 날짜 설정
 
+                
+                // 날짜 선택 버튼이 눌렸을 때 다이얼로그 이벤트 함수
                 val dlg = DatePickerDialog(context!!, object : DatePickerDialog.OnDateSetListener {
+                    // 날짜 선택 함수 구현
                     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int)
                     {
+                        // 선택한 날짜 log에 찍기
                         Log.d("MAIN", "${year}, ${month + 1}, ${dayOfMonth}")
+
+                        // 날짜 선택 버튼을 선택한 날짜로 설정
                         DateSelectBtn.setText("${year}, ${month + 1}, ${dayOfMonth}")
 
-
+                        // dateText 변수에 선택한 날짜 저장
                         dateText = "${year}, ${month + 1}, ${dayOfMonth}"
                     }
 
-                }       , year, month, date)
+                }       , year, month, date) // 선택된 년, 월, 일 정보 set
+                
+                // 다이얼로그 보여주기
                 dlg.show()
             }
 
@@ -145,13 +146,14 @@ class MemoFragment : Fragment() {
                 val database = Firebase.database
                 val myRef = database.getReference("myMemo").child(Firebase.auth.currentUser!!.uid)
 
+                // model 변수에 날짜와 내용을 DataModel화 후 저장
                 val model = DataModel(dateText, Memo)
 
-                myRef
-                    .push()
-                    .setValue(model)
+                myRef // 경로
+                    .push()     // 정보를 계속 추가
+                    .setValue(model)    // 값을 model에 저장
 
-                mAlertDialog.dismiss()
+                mAlertDialog.dismiss()      // 다이얼로그 사라짐
 
 
             }
@@ -164,20 +166,24 @@ class MemoFragment : Fragment() {
                 val database = Firebase.database
                 val toAll = database.getReference("ToAll")
 
+                // model 변수에 날짜와 내용을 DataModel화 후 저장
                 val model = DataModel(dateText, Memo2)
 
-                toAll
-                        .push()
-                        .setValue(model)
+                toAll // 경로
+                        .push()     // 정보를 계속 추가
+                        .setValue(model) // 값을 model에 저장
 
-                mAlertDialog.dismiss()
+                mAlertDialog.dismiss()      // 다이얼로그 사라짐
 
 
             }
 
+            // 글 작성 취소 버튼 설정
             val cancelBtn = mAlertDialog.findViewById<Button>(R.id.cancelBtn)
+            
+            // cancelBtn 클릭되면 이벤트 실행
             cancelBtn?.setOnClickListener {
-                mAlertDialog.dismiss()
+                mAlertDialog.dismiss()     // 다이얼로그 사라짐
             }
 
 
@@ -192,26 +198,9 @@ class MemoFragment : Fragment() {
 
         // Inflate the layout for this fragment
 
+        // 메모 프래그먼트 레이아웃 inflate
         return inflater.inflate(R.layout.fragment_memo, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MemoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MemoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
