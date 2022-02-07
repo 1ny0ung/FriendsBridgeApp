@@ -1,40 +1,26 @@
 package com.example.friendsbridgeapp
 
-import android.app.AlertDialog
-import android.app.DatePickerDialog
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.example.friendsbridgeapp.R
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
-    //val dataModelList = mutableListOf<DataModel>()
+    // 각 프래그먼트 담을 변수 선언하여 객체화한 프래그먼트 담기
     val memoFragment: Fragment = MemoFragment()
     val myPageFragment : Fragment = MyPageFragment()
     val calendarFragment : Fragment = CalendarFragment()
 
+    // 메인 화면 불러오기
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        //val database = Firebase.database
-        //val myRef = database.getReference("myMemo")
-
-        //val listView = findViewById<ListView>(R.id.mainLV)
-
-        //val adapterList = ListViewAdapter(dataModelList)
+        // 캘린더 버튼 클릭되면 캘린더 프래그먼트 화면으로 이동
         val btnCalendar = findViewById<Button>(R.id.btnCalendar)
         btnCalendar.setOnClickListener {
             supportFragmentManager.beginTransaction()
@@ -42,7 +28,15 @@ class MainActivity : AppCompatActivity() {
                     .commitAllowingStateLoss()
         }
 
+        // 메모 버튼 클릭되면 메모 프래그먼트 화면으로 이동
+        val btnMemo = findViewById<Button>(R.id.btnMemo)
+        btnMemo.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentView, memoFragment)
+                .commitAllowingStateLoss()
+        }
 
+        // 마이페이지 버튼 클릭되면 마이페이지 프래그먼트 화면으로 이동
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
         btnMyPage.setOnClickListener {
             supportFragmentManager.beginTransaction()
@@ -50,11 +44,6 @@ class MainActivity : AppCompatActivity() {
                 .commitAllowingStateLoss()
         }
 
-        val btnMemo = findViewById<Button>(R.id.btnMemo)
-        btnMemo.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentView, memoFragment)
-                .commitAllowingStateLoss()
-        }
+
     }
 }

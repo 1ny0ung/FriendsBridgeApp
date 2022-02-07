@@ -30,6 +30,26 @@ import java.io.File
 import java.net.URL
 import kotlin.math.log
 
+class MyPageFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ):View? {
+        return inflater.inflate(R.layout.fragment_my_page, container, false)
+    }
+
+}
+
+
+
+
+/*
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -249,3 +269,5 @@ class MyPageFragment : Fragment() {
 
 
 }
+
+ */
