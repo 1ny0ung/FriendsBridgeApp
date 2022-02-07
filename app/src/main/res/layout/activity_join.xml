@@ -19,6 +19,7 @@
 
     <View
         android:id="@+id/view"
+
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginTop="120dp"
@@ -374,6 +375,8 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="회원가입하기" />-->
 
+
 <!--    </LinearLayout>-->
 
 <!--</LinearLayout>-->
+

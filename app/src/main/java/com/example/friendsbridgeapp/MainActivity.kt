@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.*
 import androidx.fragment.app.Fragment
 
-
 class MainActivity : AppCompatActivity() {
 
     // 각 프래그먼트 담을 변수 선언하여 객체화한 프래그먼트 담기
@@ -18,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         // 캘린더 버튼 클릭되면 캘린더 프래그먼트 화면으로 이동
         val btnCalendar = findViewById<Button>(R.id.btnCalendar)
@@ -37,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 마이페이지 버튼 클릭되면 마이페이지 프래그먼트 화면으로 이동
+
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
         btnMyPage.setOnClickListener {
             supportFragmentManager.beginTransaction()
