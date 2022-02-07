@@ -131,7 +131,7 @@ class LoginActivity : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 // 만약 database의 "user" 항목이 user uid 이름의 자식 항목을 가지는 경우
                                 // 가입 정보가 있는 것 - 로그인시킴
-                                if(snapshot.hasChild(loginAuth.currentUser!!.uid.toString())){
+                                if(snapshot.hasChild(loginAuth.currentUser!!.uid)){
                                     // 로그인, 메인 액티비티(.MainActivity)로 이동
                                     Toast.makeText(this@LoginActivity, "로그인이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
@@ -141,7 +141,7 @@ class LoginActivity : AppCompatActivity() {
                                 // 가입 정보가 없는 것 - 회원 가입 시킴
                                 else{
                                     // 파이어베이스 데이터베이스의 "users" 항목에 접근
-                                    val userDBRef = database.reference.child("users")
+                                    val userDBRef = database.reference.child("users").child(loginAuth.currentUser!!.uid)
                                     // 파이어베이스 데이터베이스의 "users" 항목에 user의 uid 이름의 항목을 만들어, 유저 정보 저장 데이터 모델 객체를 값으로 설정
                                     // uid, 닉네임, 프로필 사진 저장 경로 저장
                                     val userDataModel = userDataModel(task.result!!.user!!.uid, task.result!!.user!!.uid, "userImgs/ProfileImg/defaultprofileImg.jpg")

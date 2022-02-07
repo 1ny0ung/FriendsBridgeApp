@@ -9,157 +9,114 @@
     <FrameLayout
         android:id="@+id/fragmentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
-    <ImageView
-        android:id="@+id/main_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_splash" />
+        <ImageView
+            android:id="@+id/main_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_splash" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="434dp"
-        android:layout_height="83dp"
-        android:foregroundTint="#F2CA96"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bottombox" />
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="434dp"
+            android:layout_height="83dp"
+            android:foregroundTint="#F2CA96"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/bottombox" />
 
-    <Button
-        android:id="@+id/btnCalendar"
-        android:layout_width="55dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        app:icon="@drawable/ic_calender_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/btnCalendar"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            app:icon="@drawable/ic_calender_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="bottom|center" />
 
-    <Button
-        android:id="@+id/btnMemo"
-        android:layout_width="55dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#F2CA96"
-        app:icon="@drawable/ic_memo_icon"
-        app:iconTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/btnMemo"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#F2CA96"
+            app:icon="@drawable/ic_memo_icon"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="bottom|left"
+            android:layout_marginLeft="40dp"/>
 
-    <Button
-        android:id="@+id/btnMyPage"
-        android:layout_width="55dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#F2CA96"
-        app:icon="@drawable/ic_mypage_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/btnMyPage"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#F2CA96"
+            app:icon="@drawable/ic_mypage_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="40dp"/>
 
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="261dp"
-        android:layout_height="29dp"
-        android:fontFamily="@font/asiahead02"
-        android:gravity="center"
-        android:text="Friends Bridge"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="261dp"
+            android:layout_height="29dp"
+            android:fontFamily="@font/asiahead02"
+            android:gravity="center"
+            android:text="Friends Bridge"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="25dp"/>
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="30dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logofull" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="30dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logofull"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="20dp" />
 
-    <TextView
-        android:id="@+id/text_view2"
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
-        android:fontFamily="@font/asiahead01"
-        android:gravity="center"
-        android:text="우리를 이어주는 특별한 공간"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.798" />
-
-
+        <TextView
+            android:id="@+id/text_view2"
+            android:layout_width="374dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/asiahead01"
+            android:gravity="center"
+            android:text="우리를 이어주는 특별한 공간"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.798" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".MainActivity">-->
-
-<!--    &lt;!&ndash; fragment 화면이 나타 날 FrameLayout   &ndash;&gt;-->
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragmentView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
-
-<!--    &lt;!&ndash; 캘린더 화면을 불러오는 calendar 버튼&ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/btnCalendar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:text="calendar"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    &lt;!&ndash; 메모 화면을 불러오는 memo 버튼&ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/btnMemo"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="160dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:text="memo"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    &lt;!&ndash; 마이페이지 화면을 불러오는 my page 버튼&ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/btnMyPage"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="300dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:text="my page"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
