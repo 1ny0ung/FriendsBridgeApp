@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "152726527438",
+    "firebase_url": "https://friends-bridgeapp-default-rtdb.firebaseio.com",
+    "project_id": "friends-bridgeapp",
+    "storage_bucket": "friends-bridgeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152726527438:android:5ebb0940345e5a3c0b1f9f",
+        "android_client_info": {
+          "package_name": "com.example.friendsbridgeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152726527438-129c817etjhiibspv8provee5gfl1u1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.friendsbridgeapp",
+            "certificate_hash": "487f9a7aaf1d29e114ffd5dfd1280cc4feae06b0"
+          }
+        },
+        {
+          "client_id": "152726527438-0re2trbpoi3fl82krvbkco7fbrq1jc16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLT4Huvs3pS-BiYG-asbdgZ6buge8x3o0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152726527438-0re2trbpoi3fl82krvbkco7fbrq1jc16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
