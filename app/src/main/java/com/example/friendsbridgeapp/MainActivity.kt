@@ -28,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val btnCalendar = findViewById<Button>(R.id.btnCalendar)
+        btnCalendar.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentView, calendarFragment)
+                    .commitAllowingStateLoss()
+        }
+
 
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
         btnMyPage.setOnClickListener {
@@ -42,5 +49,12 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.fragmentView, memoFragment)
                 .commitAllowingStateLoss()
         }
+    }
+
+    fun receiveUserData(what : userDataModel){
+        val userData : userDataModel = what
+        Log.d("userData", userData.userName)
+        Log.d("userData", userData.uid)
+        Log.d("userData", userData.profileImgUrl)
     }
 }

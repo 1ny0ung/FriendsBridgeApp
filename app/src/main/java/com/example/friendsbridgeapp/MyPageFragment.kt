@@ -85,26 +85,35 @@ class MyPageFragment : Fragment() {
         userRef.addValueEventListener(object :
             ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                    profileUrl = snapshot.getValue(userDataModel::class.java)!!.profileImgUrl
-                    txtNickName.setText(snapshot.getValue(userDataModel::class.java)!!.userName)
-                    Firebase.storage.reference.child(profileUrl).downloadUrl.addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            Glide.with(getView()!!).load(it.result).override(400, 400)
-                                .thumbnail(0.1f).into(profileImageView)
-                        }
-                        else{
-                            Log.d("error", "업로드 실패")
-                            Glide.with(getView()!!).load(R.drawable.ic_baseline_person_24).override(400,400).into(profileImageView)
-                        }
-                    }
-                    txtAccount.setText(loginAuth.currentUser!!.email.toString())
+                profileUrl = snapshot.getValue(userDataModel::class.java)!!.profileImgUrl
+                txtNickName.setText(snapshot.getValue(userDataModel::class.java)!!.userName)
 
+                val mActivity = activity as MainActivity
+                mActivity.receiveUserData(snapshot.getValue(userDataModel::class.java)!!)
+                Log.d("TAG", "액티비티로 데이터 전달")
+
+                Firebase.storage.reference.child(profileUrl).downloadUrl.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Glide.with(getView()!!).load(it.result).override(400, 400)
+                            .thumbnail(0.1f).into(profileImageView)
+                    }
+                    else{
+                        Log.d("error", "업로드 실패")
+                        Glide.with(getView()!!).load(R.drawable.ic_baseline_person_24).override(400,400).into(profileImageView)
+                    }
+                }
+                txtAccount.setText(loginAuth.currentUser!!.email.toString())
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
+
         })
 
+        btnUserDataEdit.setOnClickListener {
+
+        }
+        /*
         btnUserDataEdit.setOnClickListener {
             val mDialogView = LayoutInflater.from(context).inflate(R.layout.userdataedit_dialog, null)
             val mBuilder = AlertDialog.Builder(context)
@@ -114,17 +123,23 @@ class MyPageFragment : Fragment() {
             edtNickname = mAlertDialog.findViewById<EditText>(R.id.edtNickName)
             txtAccount2 = mAlertDialog.findViewById<TextView>(R.id.txtAccount)
             profileImageView2 = mAlertDialog.findViewById<ImageView>(R.id.profileImgView)
+            profileImageView2.setImageResource(R.drawable.ic_baseline_person_24)
+            profileImageView2.background = ShapeDrawable(OvalShape())
+            profileImageView2.clipToOutline = true
+            /*
             Firebase.storage.reference.child(profileUrl).downloadUrl.addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Glide.with(getView()!!).load(it.result).override(400, 400)
+                    Glide.with(mDialogView).load(it.result).override(400, 400)
                         .thumbnail(0.1f).into(profileImageView2)
                 }
                 else{
                     Log.d("error", "업로드 실패")
-                    Glide.with(getView()!!).load(R.drawable.ic_baseline_person_24).override(400,400).into(profileImageView2)
+                    Glide.with(mDialogView).load(R.drawable.ic_baseline_person_24).override(400,400).into(profileImageView2)
                 }
             }
 
+             */
+            /*
             btnSaveData = mAlertDialog.findViewById<Button>(R.id.btnSaveData)
             btnWithdraw = mAlertDialog.findViewById<Button>(R.id.btnWithdraw)
 
@@ -134,8 +149,8 @@ class MyPageFragment : Fragment() {
                 val intent : Intent = Intent(Intent.ACTION_PICK)
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE)
                 startActivityForResult(intent, GALLERY_CODE)
-            }
-
+            }*/
+            /*
             btnSaveData.setOnClickListener {
                 val databaseRef = database.reference.child("users").child(loginAuth.currentUser!!.uid)
                 val userStorageReference = storage.reference.child("userImgs").child( "ProfileImg/" + loginAuth.currentUser!!.uid)
@@ -190,7 +205,7 @@ class MyPageFragment : Fragment() {
                         TODO("Not yet implemented")
                     }
                 })
-                /*
+
                 Firebase.storage.reference.child("userImgs/ProfileImg/" + loginAuth.currentUser!!.uid.toString()).delete().addOnCompleteListener {task->
                     if(task.isSuccessful) {
                         Firebase.storage.reference.child("userImgs/ProfileImg/" + loginAuth.currentUser!!.uid.toString())
@@ -208,9 +223,9 @@ class MyPageFragment : Fragment() {
                     else{
                         Log.d("check", "삭제 실패")
                     }
-                }*/
-            }
-        }
+                }
+            }*/
+        }*/
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
