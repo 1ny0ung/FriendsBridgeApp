@@ -4,17 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainColor"
-    tools:context=".SplashActivity">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/fragmentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:id="@+id/main_image"
@@ -22,57 +17,102 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_splash"
-        tools:ignore="VectorDrawableCompat" />
+        app:srcCompat="@drawable/ic_splash" />
 
     <ImageView
-        android:id="@+id/train_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:id="@+id/imageView8"
+        android:layout_width="434dp"
+        android:layout_height="83dp"
+        android:foregroundTint="#F2CA96"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_train_01"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-400dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bottombox" />
+
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        app:icon="@drawable/ic_calender_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnMemo"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#F2CA96"
+        app:icon="@drawable/ic_memo_icon"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnMyPage"
+        android:layout_width="55dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#F2CA96"
+        app:icon="@drawable/ic_mypage_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_view"
-        android:layout_width="374dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
+        android:layout_width="261dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/asiahead02"
         android:gravity="center"
         android:text="Friends Bridge"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="172dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="210dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/imageView9"
+        android:layout_width="30dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/ic_logo"
-        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+        app:srcCompat="@drawable/ic_logofull" />
 
-    </FrameLayout>
+    <TextView
+        android:id="@+id/text_view2"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:fontFamily="@font/asiahead01"
+        android:gravity="center"
+        android:text="우리를 이어주는 특별한 공간"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->
