@@ -45,6 +45,7 @@ class MemoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val database = Firebase.database
         val myRef = database.getReference("myMemo")
+        val toAll = database.getReference("ToAll")
 
         val listView = getView()!!.findViewById<ListView>(R.id.mainLV)
 
@@ -55,6 +56,31 @@ class MemoFragment : Fragment() {
 
         myRef.child(Firebase.auth.currentUser!!.uid).addValueEventListener(object :
             ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("point", dataModelList.toString())
+                dataModelList.clear()
+                Log.d("point", dataModelList.toString())
+
+                for (dataModel in snapshot.children) {
+                    Log.d("Data", dataModel.toString())
+                    dataModelList.add(dataModel.getValue(DataModel::class.java)!!)
+
+                }
+                adapterList.notifyDataSetChanged()
+                Log.d("DataModel", dataModelList.toString())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        Log.d("DataModel------", dataModelList.toString())
+
+        toAll.addValueEventListener(object :
+                ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 Log.d("point", dataModelList.toString())
                 dataModelList.clear()
@@ -129,6 +155,32 @@ class MemoFragment : Fragment() {
 
 
             }
+
+            val saveBtn2 = mAlertDialog.findViewById<Button>(R.id.saveBtn2)
+            saveBtn2?.setOnClickListener {
+
+                val Memo2 = mAlertDialog.findViewById<EditText>(R.id.Memo).text.toString()
+
+                val database = Firebase.database
+                val toAll = database.getReference("ToAll")
+
+                val model = DataModel(dateText, Memo2)
+
+                toAll
+                        .push()
+                        .setValue(model)
+
+                mAlertDialog.dismiss()
+
+
+            }
+
+            val cancelBtn = mAlertDialog.findViewById<Button>(R.id.cancelBtn)
+            cancelBtn?.setOnClickListener {
+                mAlertDialog.dismiss()
+            }
+
+
         }
 
     }

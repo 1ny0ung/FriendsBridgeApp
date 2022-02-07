@@ -8,13 +8,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.example.friendsbridgeapp.R
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +22,25 @@ class MainActivity : AppCompatActivity() {
     //val dataModelList = mutableListOf<DataModel>()
     val memoFragment: Fragment = MemoFragment()
     val myPageFragment : Fragment = MyPageFragment()
+    val calendarFragment : Fragment = CalendarFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        //val database = Firebase.database
+        //val myRef = database.getReference("myMemo")
+
+        //val listView = findViewById<ListView>(R.id.mainLV)
+
+        //val adapterList = ListViewAdapter(dataModelList)
+        val btnCalendar = findViewById<Button>(R.id.btnCalendar)
+        btnCalendar.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentView, calendarFragment)
+                    .commitAllowingStateLoss()
+        }
 
 
         val btnMyPage = findViewById<Button>(R.id.btnMyPage)
