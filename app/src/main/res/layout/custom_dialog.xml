@@ -1,38 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainColor"
     android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="418dp"
+        android:layout_height="674dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_header_custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/dateSelectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="500dp"
+        android:text="날짜를 선택해주세요"
+        app:icon="@drawable/ic_calender_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Memo"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_width="362dp"
+        android:layout_height="327dp"
         android:layout_margin="20dp"
-        android:hint="메모를 입력해주세요"
-        android:background="@android:color/transparent" />
+        android:background="#FCFBF8"
+        android:hint="  글을 입력해주세요\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63" />
+
+    <Button
+        android:id="@+id/cancelBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/asiahead02"
+        app:icon="@drawable/ic_back_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view2"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="464dp"
+        android:fontFamily="@font/asiahead01"
+        android:gravity="center"
+        android:text="-------------------------------------------------"
+        android:textColor="@color/buttonColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view3"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/asiahead01"
+        android:gravity="center"
+        android:text="-------------------------------------------------"
+        android:textColor="@color/buttonColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="144dp"
+        android:layout_height="71dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/asiahead02"
+        android:text="글쓰기"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:background="#999999"
-        android:layout_margin="18dp"
-        android:layout_height="0.5dp"/>
+        android:id="@+id/linearLayout"
+        android:layout_width="380dp"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/asiahead01"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:text="날짜를 선택해주세요"
-        android:id="@+id/dateSelectBtn"
-        android:layout_margin="28dp"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"/>
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:fontFamily="@font/asiahead01"
+            android:text="개인 업로드"
+            app:icon="@drawable/ic_lock" />
 
-    <Button
-        android:text="저장하기"
-        android:id="@+id/saveBtn"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_margin="28dp"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"/>
+        <Button
+            android:id="@+id/saveBtn2"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:fontFamily="@font/asiahead01"
+            android:text="전체 업로드"
+            app:icon="@drawable/ic_unlock" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical">-->
+
+<!--    &lt;!&ndash;메모 입력하는 EditText 칸&ndash;&gt;-->
+<!--    <EditText-->
+<!--        android:id="@+id/Memo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:hint="메모를 입력해주세요"-->
+<!--        android:background="@android:color/transparent" />-->
+
+<!--    &lt;!&ndash;회색 구분 실선&ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:background="#999999"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:layout_height="0.5dp"/>-->
+
+<!--    &lt;!&ndash;날짜 선택 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:text="날짜를 선택해주세요"-->
+<!--        android:id="@+id/dateSelectBtn"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="68dp"/>-->
+
+<!--    &lt;!&ndash;비공개 저장 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:text="비공개 저장"-->
+<!--        android:id="@+id/saveBtn"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginRight="28dp"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="68dp"/>-->
+
+<!--    &lt;!&ndash;전체 공개 저장 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:text="전체 공개 저장"-->
+<!--        android:id="@+id/saveBtn2"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginRight="28dp"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="68dp"/>-->
+
+<!--    &lt;!&ndash;취소 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:text="취소"-->
+<!--        android:id="@+id/cancelBtn"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginRight="28dp"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="68dp"/>-->
+
+<!--</LinearLayout>-->

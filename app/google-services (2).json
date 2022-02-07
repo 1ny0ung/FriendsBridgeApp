@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "152726527438",
+    "firebase_url": "https://friends-bridgeapp-default-rtdb.firebaseio.com",
     "project_id": "friends-bridgeapp",
     "storage_bucket": "friends-bridgeapp.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "152726527438-129c817etjhiibspv8provee5gfl1u1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.friendsbridgeapp",
+            "certificate_hash": "487f9a7aaf1d29e114ffd5dfd1280cc4feae06b0"
+          }
+        },
         {
           "client_id": "152726527438-0re2trbpoi3fl82krvbkco7fbrq1jc16.apps.googleusercontent.com",
           "client_type": 3
