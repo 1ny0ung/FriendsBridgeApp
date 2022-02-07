@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".MemoFragment">
 
+
+
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:id="@+id/mainLV"
@@ -18,7 +20,6 @@
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="100dp"
             android:src="@drawable/ic_icon" />
-<!--    </ListView>-->
 
 </FrameLayout>
 
