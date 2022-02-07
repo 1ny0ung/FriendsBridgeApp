@@ -1,117 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".JoinActivity">
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_splash" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="164dp"
+        android:background="@drawable/bg_header_custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="339dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
+        app:srcCompat="@drawable/ic_nick_button" />
+
+    <ImageView
+        android:layout_width="339dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
+        app:srcCompat="@drawable/ic_email_button" />
+
+    <ImageView
+        android:layout_width="339dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view"
+        app:srcCompat="@drawable/ic_password_button" />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Friends Bridge"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="172dp"
+        android:layout_height="31dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103"
+        app:srcCompat="@drawable/ic_logo"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="80dp"
         android:layout_weight="5"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:id="@+id/btnProfileImg"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="30dp"
-            android:clickable="true"
-            android:scaleX="3"
-            android:scaleY="3"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_person_24" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
         android:orientation="horizontal"
-        android:padding="30dp">
+        android:padding="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="닉네임 : "
-            android:textSize="20dp"
-            android:layout_gravity="bottom"/>
+            android:layout_gravity="top"
+            android:text="이름 *"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="nickname"
+            android:hint="이름을 입력해주세요"
             android:inputType="text"
             android:singleLine="false" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_marginBottom="200dp"
+        android:layout_weight="5"
         android:orientation="horizontal"
-        android:padding="30dp">
+        android:padding="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="이메일 : "
-            android:textSize="20dp"
-            android:layout_gravity="center"/>
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edtEmail"
-            android:hint="email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:hint="예) guru20@swu.ac.kr"
             android:inputType="textEmailSubject"
-            android:singleLine="false"
-            android:layout_gravity="center"/>
+            android:singleLine="false" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="5"
         android:orientation="horizontal"
-        android:padding="30dp">
+        android:padding="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image" >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호 : "
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edtPassword"
-            android:hint="password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="textPassword"
-            android:singleLine="false"/>
+            android:hint="비밀번호를 입력해주세요"
+            android:inputType="textEmailSubject"
+            android:singleLine="false" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
-        android:gravity="center_horizontal">
+        android:layout_marginBottom="16dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
 
         <Button
             android:id="@+id/btnJoin"
-            android:layout_width="wrap_content"
+
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="331dp"
             android:layout_height="wrap_content"
-            android:text="회원가입하기" />
+            android:background="#FFFFFF"
+            android:text="가입하기"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
