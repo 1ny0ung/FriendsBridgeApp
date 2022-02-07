@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/dateSelectBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="364dp"
+        android:layout_height="68dp"
+        android:layout_margin="28dp"
+        android:text="날짜"
+        app:iconTint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/Memo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@android:color/transparent"
+        android:hint="글을 입력해주세요." />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_margin="18dp"
+        android:background="#999999" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
+        android:layout_margin="28dp"
+        android:text="저장하기" />
+
+    <Button
+        android:id="@+id/photoBtn"
+        android:layout_width="150dp"
+        android:layout_height="68dp"
+        android:layout_margin="28dp"
+        android:text="사진추가" />
+
+</LinearLayout>
