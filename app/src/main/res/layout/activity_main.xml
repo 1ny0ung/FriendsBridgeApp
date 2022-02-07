@@ -4,45 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/mainColor"
+    tools:context=".SplashActivity">
 
-    <!-- fragment 화면이 나타 날 FrameLayout   -->
     <FrameLayout
         android:id="@+id/fragmentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
 
-    <!-- 캘린더 화면을 불러오는 calendar 버튼-->
-    <Button
-        android:id="@+id/btnCalendar"
+    <ImageView
+        android:id="@+id/main_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="calendar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_splash"
+        tools:ignore="VectorDrawableCompat" />
 
-    <!-- 메모 화면을 불러오는 memo 버튼-->
-    <Button
-        android:id="@+id/btnMemo"
+    <ImageView
+        android:id="@+id/train_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="20dp"
-        android:text="memo"
+        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_train_01"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-400dp" />
 
-    <!-- 마이페이지 화면을 불러오는 my page 버튼-->
-    <Button
-        android:id="@+id/btnMyPage"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="374dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginBottom="20dp"
-        android:text="my page"
+        android:layout_marginTop="210dp"
+        android:gravity="center"
+        android:text="Friends Bridge"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="172dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="210dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.103"
+        app:srcCompat="@drawable/ic_logo"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".MainActivity">-->
+
+<!--    &lt;!&ndash; fragment 화면이 나타 날 FrameLayout   &ndash;&gt;-->
+<!--    <FrameLayout-->
+<!--        android:id="@+id/fragmentView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+<!--    &lt;!&ndash; 캘린더 화면을 불러오는 calendar 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btnCalendar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:text="calendar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    &lt;!&ndash; 메모 화면을 불러오는 memo 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btnMemo"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="160dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:text="memo"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    &lt;!&ndash; 마이페이지 화면을 불러오는 my page 버튼&ndash;&gt;-->
+<!--    <Button-->
+<!--        android:id="@+id/btnMyPage"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="300dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:text="my page"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
