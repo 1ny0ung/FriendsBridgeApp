@@ -13,17 +13,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_splash" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="164dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/bg_header_custom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +46,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.104" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/asiahead02"
+        android:text="로그인"
+        android:textColor="#F4A56E"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:fontFamily="@font/asiahead02"
+        android:text="아이디 찾기 l 비밀번호 찾기"
+        android:textColor="#F4A56E"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="172dp"
@@ -57,145 +87,287 @@
         tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
     <ImageView
-        android:layout_width="339dp"
+        android:id="@+id/imageView7"
+        android:layout_width="340dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/ic_email_button"
-        tools:layout_editor_absoluteX="36dp" />
+        android:layout_marginBottom="380dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_email_button" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="339dp"
         android:layout_height="46dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginBottom="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view"
         app:srcCompat="@drawable/ic_password_button" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="74dp"
-        android:layout_weight="5"
-        android:orientation="vertical"
-        android:paddingLeft="40dp"
-        android:paddingRight="0dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="440dp"
+        android:text="이메일 * "
+        android:textColor="#FFB253"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view">
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="이메일 * "
-            android:textColor="@color/buttonColor"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="251dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:hint="email"
-            android:inputType="textEmailSubject"
-            android:singleLine="false" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        android:padding="40dp"
-        tools:layout_editor_absoluteY="328dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="비밀번호 * "
-            android:textColor="@color/buttonColor"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/edtPassword"
-            android:layout_width="227dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:hint="password"
-            android:inputType="textPassword"
-            android:singleLine="false"
-            android:textColor="@color/white" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="260dp"
         android:layout_height="40dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:paddingLeft="30dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="380dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/asiahead01"
+        android:hint="email"
+        android:inputType="textEmailSubject"
+        android:singleLine="false"
+        android:textColor="#FDF1E1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="340dp"
+        android:text="비밀번호 * "
+        android:textColor="#FFB253"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="@+id/main_image"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="280dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/asiahead01"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:singleLine="false"
+        android:textColor="#FDF1E1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkEmailSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="230dp"
+        android:buttonTint="#FFB253"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="245dp"
+        android:text="Email 저장하기"
+        android:textColor="#FFB253"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="486dp">
+        app:srcCompat="@drawable/ic_join_button" />
 
-        <CheckBox
-            android:id="@+id/checkEmailSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Email 저장"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="5"
-        android:gravity="center_vertical"
+    <Button
+        android:id="@+id/btnJoin"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/asiahead02"
+        android:text="회원가입 하기 >"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFB253"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-52dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-        <Button
-            android:id="@+id/btnJoin"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="회원가입" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="5"
-        android:gravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-52dp">
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="128dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/asiahead02"
         android:text="로그인"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="532dp" />
+        android:textAlignment="center"
+        android:textColor="#FFB253"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnJoin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleLogin"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_image"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".LoginActivity">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="5"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="40dp"-->
+<!--        android:paddingRight="0dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="이메일 : "-->
+<!--            android:textSize="20dp"-->
+<!--            android:layout_gravity="bottom"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/edtEmail"-->
+<!--            android:hint="email"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:inputType="textEmailSubject"-->
+<!--            android:singleLine="false"-->
+<!--            android:layout_gravity="bottom"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="3"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="40dp">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="비밀번호 : "-->
+<!--            android:textSize="20dp"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/edtPassword"-->
+<!--            android:hint="password"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:singleLine="false"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="2"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="30dp"-->
+<!--        android:paddingBottom="30dp"-->
+<!--        >-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/checkEmailSave"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Email 저장"-->
+<!--            android:textSize="15dp"-->
+<!--            android:layout_gravity="center"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="3"-->
+<!--        android:gravity="center_horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnLogin"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="로그인"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginRight="30dp"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnJoin"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="회원가입"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginLeft="30dp"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="4"-->
+<!--        android:gravity="center_horizontal">-->
+<!--        <com.google.android.gms.common.SignInButton-->
+<!--            android:id="@+id/btnGoogleLogin"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </LinearLayout>-->
+
+
+<!--</LinearLayout>-->
